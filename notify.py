@@ -46,9 +46,10 @@ def job():
         image_url = get_image_url()
         download_image(image_url, 'image.jpg')
         text = ocr_image('image.jpg')
-        send_wechat_message(text)
+        print(text)
+#        send_wechat_message(text)
     except Exception as e:
         error_message = f"An error occurred: {str(e)}"
-        send_wechat_message(error_message)
-
+#        send_wechat_message(error_message)
+        print(error_message)
 job()
