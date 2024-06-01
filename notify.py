@@ -40,7 +40,7 @@ def ocr_image(image_path):
 
 def send_wechat_message(message):
     send_key = os.getenv('SEND_KEY')
-    title = "星越L最新政策更新的通知"
+    title = "定期任务通知"
     desp = message
     url = f'https://sctapi.ftqq.com/{send_key}.send'
     data = {
@@ -55,17 +55,18 @@ def job():
     try:
         print("Running job...")
         image_url = get_image_url()
-        print(f"Image URL: {image_url}")
+        print(f"图片连接: {image_url}")
         download_image(image_url, 'image.jpg')
-        print("Image downloaded successfully.")
+        print("图片下载成功.")
         text = ocr_image('image.jpg')
         print("OCR completed.")
         # 输出OCR结果，便于调试
-        print("OCR Result:", text)
+        print("结果:", text)
         send_wechat_message(text)
     except Exception as e:
         error_message = f"An error occurred: {str(e)}"
         print(error_message)
+        print("出错了")
         send_wechat_message(error_message)
 
 job()
