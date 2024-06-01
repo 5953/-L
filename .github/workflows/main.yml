@@ -22,6 +22,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install pytesseract pillow requests
 
+    - name: Install Tesseract OCR
+      run: sudo apt-get install tesseract-ocr -y
+
     - name: Run notification script
       env:
         SEND_KEY: ${{ secrets.SEND_KEY }}
