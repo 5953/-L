@@ -29,7 +29,7 @@ def ocr_image(image_path):
 
 def send_wechat_message(message):
     send_key = os.getenv('SEND_KEY')
-    title = "定期任务通知"
+    title = "关于星越L的最新政策"
     desp = message
     url = f'https://sctapi.ftqq.com/{send_key}.send'
     data = {
