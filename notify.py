@@ -38,16 +38,17 @@ def ocr_image(image_path):
     except UnidentifiedImageError:
         raise Exception(f"Cannot identify image file '{image_path}'")
 
-def send_wechat_message(message):
-    send_key = os.getenv('SEND_KEY')
-    title = "定期任务通知"
-    desp = message
-    url = f'https://sctapi.ftqq.com/{send_key}.send'
+def send_wxpusher_message(message):
+    app_token = os.getenv('APP_TOKEN')  # 从环境变量中读取AppToken
+    uids = os.getenv('UIDS').split(',')  # 从环境变量中读取UID列表（多个UID用逗号分隔）
+    url = 'https://wxpusher.zjiecode.com/api/send/message'
     data = {
-        "title": title,
-        "desp": desp
+        "appToken": app_token,
+        "content": message,
+        "contentType": 1,  # 1表示文本消息
+        "uids": uids,
     }
-    response = requests.post(url, data=data)
+    response = requests.post(url, json=data)
     if response.status_code != 200:
         print(f"Failed to send message: {response.text}")
 
@@ -55,18 +56,17 @@ def job():
     try:
         print("Running job...")
         image_url = get_image_url()
-        print(f"图片连接: {image_url}")
+        print(f"Image URL: {image_url}")
         download_image(image_url, 'image.jpg')
-        print("图片下载成功.")
+        print("Image downloaded successfully.")
         text = ocr_image('image.jpg')
         print("OCR completed.")
         # 输出OCR结果，便于调试
-        print("结果:", text)
-        send_wechat_message(text)
+        print("OCR Result:", text)
+        send_wxpusher_message(text)
     except Exception as e:
         error_message = f"An error occurred: {str(e)}"
         print(error_message)
-        print("出错了")
-        send_wechat_message(error_message)
+        send_wxpusher_message(error_message)
 
 job()
