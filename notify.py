@@ -30,10 +30,14 @@ def download_image(url, path):
             handler.write(response.content)
     else:
         raise Exception(f"Failed to download image, status code: {response.status_code}")
-
+def simplify_text_formatting(text):
+    text = re.sub(r'\n+', '\n', text).strip()  # 移除多余的换行
+    text = re.sub(r'\s+', ' ', text)  # 多余的空格替换为单个空格
+    return text
 def ocr_image(image_path):
     try:
         text = pytesseract.image_to_string(Image.open(image_path), lang='chi_sim')
+        text = simplify_text_formatting(text)
         return text
     except UnidentifiedImageError:
         raise Exception(f"Cannot identify image file '{image_path}'")
