@@ -28,5 +28,6 @@ jobs:
 
     - name: Run notify script
       env:
-        SEND_KEY: ${{ secrets.SEND_KEY }}  # 从Secrets中读取SEND_KEY
+        APP_TOKEN: ${{ secrets.APP_TOKEN }}  # 从Secrets中读取AppToken
+        UIDS: ${{ secrets.UIDS }}  # 从Secrets中读取UID列表
       run: python notify.py
