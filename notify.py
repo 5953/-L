@@ -3,6 +3,7 @@ from PIL import Image, UnidentifiedImageError
 import requests
 import os
 from datetime import datetime, timedelta
+import re
 
 # 设置Tesseract的路径（适用于GitHub Actions环境）
 pytesseract.pytesseract.tesseract_cmd = 'tesseract'
