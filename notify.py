@@ -33,7 +33,7 @@ def download_image(url, path):
         raise Exception(f"Failed to download image, status code: {response.status_code}")
 def simplify_text_formatting(text):
     # 保留两个以上的换行符，其他换行符替换为空格
-    text = re.sub(r'\n+', '\n\n', text)
+    text = re.sub(r'\n+', ' ', text.strip())
     return text
 def ocr_image(image_path):
     try:
