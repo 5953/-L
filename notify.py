@@ -28,11 +28,11 @@ def get_image_urls():
     prefixes = [
         'https://dm30webimages.geely.com/GeelyPromotion/ANEW2/xyL/',
         'https://dm30webimages.geely.com/GeelyPromotion/ANEW2/bycool/',
-        'https://dm30webimages.geely.com/GeelyPromotion/ANEW2/XyLZQ/'
-        'https://dm30webimages.geely.com/GeelyPromotion/ANEW2/HYpro/'
-        'https://dm30webimages.geely.com/GeelyPromotion/ANEW2/haoyueL/'
-        'https://dm30webimages.geely.com/GeelyPromotion/ANEW2/boyuecool/'
-        'https://dm30webimages.geely.com/GeelyPromotion/ANEW2/binruiCOOL/'
+        'https://dm30webimages.geely.com/GeelyPromotion/ANEW2/XyLZQ/',
+        'https://dm30webimages.geely.com/GeelyPromotion/ANEW2/HYpro/',
+        'https://dm30webimages.geely.com/GeelyPromotion/ANEW2/haoyueL/',
+        'https://dm30webimages.geely.com/GeelyPromotion/ANEW2/boyuecool/',
+        'https://dm30webimages.geely.com/GeelyPromotion/ANEW2/binruiCOOL/',
         # 添加更多前缀
     ]
     
