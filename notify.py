@@ -50,8 +50,9 @@ def download_image(url, path):
         return False
 
 def simplify_text_formatting(text):
-    text = re.sub(r'\n+', '\n', text.strip())
-    text = text.replace(' ', '\n')
+    # 清理多余的空行和空格
+    text = re.sub(r'\n\s*\n', '\n', text.strip())
+    text = re.sub(r'\s+', ' ', text)
     return text
 
 def ocr_image(image_path):
